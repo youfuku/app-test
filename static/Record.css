@@ -1,0 +1,525 @@
+th,td{
+    border: solid 1px black;
+    padding: 0;
+    text-align: center;
+    font-size: 21px;
+    height: 26px;
+    line-height: 0;
+}
+select{
+    font-size: 24px;
+    font-family: serif;
+    font-weight: 900;
+}
+h2{
+    margin: 0;
+    font-size: 28px;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+label{
+    font-size: 24px;
+}
+button{
+    height: 38px;
+    font-family: serif;
+    font-weight: 900;
+}
+.button1 {
+    background-color: rgba(106, 145, 255, 0.815);
+    border: 1px solid black;
+}
+span{
+    font-size: 24px;
+}
+.tb-br{
+    display: none;
+}
+body{
+    margin: 0;
+}
+
+/* メイン画面 */
+
+
+.container{
+    max-width: 1080px;
+    margin: 0px auto;
+    font-family: serif;
+    font-weight: 900;
+}
+.app-title{
+    text-align: center;
+    background-color: rgb(110, 132, 255);
+    padding: 10px 0;
+    margin: 5px 0;
+}
+
+.inner{
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+.inner input, .inner button{
+    font-size: 24px;
+}
+.inner button{
+    padding: 0 20px;
+}
+
+.record-place th{
+    background-color: rgb(220, 250, 255);
+}
+.record-place table button{
+    padding: 3px 15px;
+    position: relative;
+    bottom: 2px;
+    height: 31px;
+}
+.inputtext{
+    width: 34px;
+    font-size: 24px;
+    text-align: center;
+    border: none;
+    margin: 0 10px;
+    position: relative;
+    top: 1px;
+}
+
+.inn{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.register{
+    display: flex;
+    flex-direction: row;
+}
+.register button{
+    font-size: 24px;
+    padding: 0 20px;
+}
+.list-text{
+    padding: 0 5px;
+    border: 1px solid black;
+    height: 36px;
+}
+.list-btn button{
+    font-size: 24px;
+    padding: 0 20px;
+}
+#list-delete-btn{
+    margin-left: 20px;
+}
+.list-place{
+    width: 100%;
+    height: 200px;
+    border: solid 1px black;
+    font-size: 25px;
+    box-sizing: border-box;
+}
+.list-place input{
+    height: 18px;
+    width: 18px;
+}
+
+.in {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.data-list{
+    box-sizing: border-box;
+}
+.databox p {
+    text-align: center;
+    color: red;
+}
+.in button{
+    font-size: 24px;
+    padding: 0 20px;
+}
+.data-list table th{
+    background-color: rgb(220, 250, 255);     
+}
+
+
+.white{
+    width: 0px;
+    border: none;
+    padding: 0;
+}
+
+/* ログイン画面 */
+
+
+.container1{
+    max-width: 1080px;
+    margin: 150px auto;
+    padding: 10px;
+    border: 1px solid rgb(177, 177, 177);
+    background-color: rgb(225, 249, 255);
+}
+.log-title, .log-make, .log-input, .log-messege{
+    text-align: center;
+    margin: 30px;
+}
+.intext{
+    width: 500px;
+}
+.inbutton{
+    width: 80px;
+    background-color: rgba(106, 145, 255, 0.815);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+/* 編集＆計算画面 */
+.btn0{
+    font-size: 24px;
+}
+
+.container2{
+    max-width: 1080px;
+    margin: 0px auto;
+    font-family: serif;
+    font-weight: 900;
+}
+.container2 th,.container2 td{
+    font-size: 16px;
+}
+.container2 span,.container2 select{
+    font-size: 18px;
+}
+
+.edit-title{
+    text-align: center;
+}
+.dis-del-space{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.dis-del-space button{
+    width: 64px;
+}
+
+
+.calc-top{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.calc-down{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.calc-down td{
+    width: 50%;
+}
+.total{
+    margin-left: 10px;
+}
+.sel{
+    border: none;
+    appearance: none;
+    width: 40px;
+    text-align: center;
+}
+.calin{
+    width: 60px;
+    text-align: center;
+    font-size: 16px;
+    border: none;
+}
+
+.cluc-btn{
+    text-align: center;
+}
+.button3{
+    margin: 10px auto;
+    width: 300px;
+    font-size: 24px;
+    background-color: rgb(110, 132, 255);
+    border: 1px solid black;
+}
+
+
+@media screen and (max-width:1080px) {
+    select{
+        font-size: 18px;
+    }
+    span{
+        font-size: 18px;
+    }
+    button{
+        height: 30px;
+    }
+    th,td{
+        font-size: 18px;
+        line-height: 0;
+        height: 25px;
+    }
+    h2{
+        font-size: 20px;
+    }
+    label{
+        font-size: 18px;
+    }
+    .tb-br{
+        display: block;
+    }
+    
+
+
+    .inner button, .register button,.list-btn button,.in button{
+        font-size: 18px;
+    }
+
+    .record-place table button {
+        padding: 3px 8px;
+        position: relative;
+        bottom: 0px;
+        height: 27px;
+    }
+    .inputtext {
+        width: 34px;
+        font-size: 18px;
+        text-align: center;
+        border: none;
+        margin: 0;
+        position: relative;
+        top: 0px;
+    }
+
+
+
+    .list-text {
+        padding: 0 5px;
+        border: 1px solid black;
+        height: 28px;
+    }
+    .list-place {
+        width: 100%;
+        height: 100px;
+        border: solid 1px black;
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+    .list-place input {
+        height: 16px;
+        width: 16px;
+    }
+
+    .button3 {
+        margin: 10px auto;
+        width: 300px;
+        font-size: 18px;
+        background-color: rgb(110, 132, 255);
+        border: 1px solid black;
+    }
+
+    .btn0{
+        font-size: 18px;
+    }
+
+
+}
+
+@media screen and (max-width:480px) {
+    select{
+        font-size: 12px;
+        width: 42px;
+    }
+    span{
+        font-size: 12px;
+    }
+    button{
+        height: 20px;
+    }
+    th,td{
+        font-size: 10px;
+        line-height: 0;
+        height: 18px;
+    }
+    h2{
+        font-size: 12px;
+    }
+    label{
+        font-size: 12px;
+    }
+    .tb-br{
+        display: block;
+    }
+    
+    .log-title, .log-make, .log-input, .log-messege{
+        text-align: center;
+        margin: 10px;
+        font-size: 10px;
+    }
+    .intext {
+        width: 200px;
+        border: 1px solid rgb(136, 136, 136);
+    }
+    .container1 p{
+        font-size: 9px;
+        margin: 3px;
+    }
+    .log-form{
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .inner button, .register button,.list-btn button,.in button{
+        font-size: 10px;
+    }
+    .inner button,.register button{
+        padding: 0 5px;
+    }
+    #list-delete-btn {
+        margin-left: 0px;
+    }
+
+    .inner{
+        align-items: center;
+    }
+    .record-btn,.list-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .record-place table button {
+        padding: 0px;
+        position: relative;
+        bottom: 0px;
+        height: 16px;
+        width: 16px;
+        font-size: 6px;
+        border: 1px solid black;
+    }
+    .record-place table select{
+        width: 20px;
+    }
+    .inputtext {
+        width: 10px;
+        font-size: 12px;
+        text-align: center;
+        border: none;
+        margin: 0;
+        position: relative;
+        top: 0px;
+    }
+
+    .list p{
+        font-size: 10px;
+    }
+
+    .inn{
+        margin: 5px 0;
+    }
+    .list-text {
+        padding: 0 2px;
+        border: 1px solid black;
+        height: 18px;
+        width: 60px;
+    }
+    .list-place {
+        width: 100%;
+        height: 100px;
+        border: solid 1px black;
+        font-size: 18px;
+        box-sizing: border-box;
+    }
+    .list-place input {
+        height: 12px;
+        width: 12px;
+    }
+
+    .button3 {
+        margin: 10px auto;
+        width: 300px;
+        font-size: 18px;
+        background-color: rgb(110, 132, 255);
+        border: 1px solid black;
+    }
+
+
+    .container2 th,.container2 td{
+        font-size: 10px;
+    }
+    .container2 span,.container2 select{
+        font-size: 10px;
+    }
+    .dis-del-space button{
+        font-size: 10px;
+    }
+    .dis-del-space select{
+        width: 45px;
+    }
+    
+    .edit-title{
+        text-align: center;
+    }
+    .dis-del-space{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .data-calc1{
+        width: 90%;
+    }
+
+    .calc-top{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    .calc-down{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    .calc-down td{
+        width: 50%;
+    }
+    .total{
+        margin-left: 10px;
+    }
+    .sel{
+        border: none;
+        appearance: none;
+        width: 22px;
+        text-align: center;
+    }
+    .calin{
+        width: 28px;
+        text-align: center;
+        font-size: 10px;
+        border: none;
+    }
+    
+    .cluc-btn{
+        text-align: center;
+    }
+    .button3{
+        margin: 10px auto;
+        width: 200px;
+        font-size: 12px;
+        background-color: rgb(110, 132, 255);
+        border: 1px solid black;
+    }
+
+    .btn0{
+        font-size: 12px;
+    }
+
+}

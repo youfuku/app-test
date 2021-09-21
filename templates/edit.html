@@ -1,0 +1,829 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<header>
+    <div class="container">
+        <h2 class="app-title">payroll app</h2>
+    </div>
+</header>
+<main>
+    <div class="container2">
+        <form action="/back" method="POST" id="back-btn">
+            <input type="text" class="white" name="userps"value="{{userps}}">
+            <button type="submit" class="btn0">←記録ページに戻る</button>
+        </form>
+        <div class="edit-title">
+            <h2>【データベースの編集＆計算】</h2> 
+        </div>
+        <div class="display-space">
+            <div class="dis-del-space" id="comment-place">
+                <div class="display">
+                    <span>◆指定表示◆</span>
+                    <br class="tb-br">
+                    <span>月:</span>
+                    <select id="res-select-month">
+                        <option value="未指定">未指定</option>
+                        <option value="1">1月</option>
+                        <option value="2">2月</option>
+                        <option value="3">3月</option>
+                        <option value="4">4月</option>
+                        <option value="5">5月</option>
+                        <option value="6">6月</option>
+                        <option value="7">7月</option>
+                        <option value="8">8月</option>
+                        <option value="9">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                    <span>名前:</span>
+                    <select id="res-select-name">
+                        <option value="未指定">未指定</option>
+                        {% for namer in namers %}
+                        <option value="{{namer}}">{{namer}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="button" id="res-btn">表示</button>
+                </div>
+                <div class="delete">
+                    <span>◆指定削除◆</span>
+                    <br class="tb-br">
+                    <span>月:</span>
+                    <select id="edit-select-month">
+                        <option value="未指定">未指定</option>
+                        <option value="1">1月</option>
+                        <option value="2">2月</option>
+                        <option value="3">3月</option>
+                        <option value="4">4月</option>
+                        <option value="5">5月</option>
+                        <option value="6">6月</option>
+                        <option value="7">7月</option>
+                        <option value="8">8月</option>
+                        <option value="9">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                    <span>日:</span>
+                    <select id="edit-select-day">
+                        <option value="未指定">未指定</option>
+                        <option value="1">1日</option>
+                        <option value="2">2日</option>
+                        <option value="3">3日</option>
+                        <option value="4">4日</option>
+                        <option value="5">5日</option>
+                        <option value="6">6日</option>
+                        <option value="7">7日</option>
+                        <option value="8">8日</option>
+                        <option value="9">9日</option>
+                        <option value="10">10日</option>
+                        <option value="11">11日</option>
+                        <option value="12">12日</option>
+                        <option value="13">13日</option>
+                        <option value="14">14日</option>
+                        <option value="15">15日</option>
+                        <option value="16">16日</option>
+                        <option value="17">17日</option>
+                        <option value="18">18日</option>
+                        <option value="19">19日</option>
+                        <option value="20">20日</option>
+                        <option value="21">21日</option>
+                        <option value="22">22日</option>
+                        <option value="23">23日</option>
+                        <option value="24">24日</option>
+                        <option value="25">25日</option>
+                        <option value="26">26日</option>
+                        <option value="27">27日</option>
+                        <option value="28">28日</option>
+                        <option value="29">29日</option>
+                        <option value="30">30日</option>
+                        <option value="31">31日</option>
+                    </select>
+                    <span>名前:</span>
+                    <select id="edit-select-name">
+                        <option value="未指定">未指定</option>
+                        {% for namer in namers %}
+                        <option value="{{namer}}">{{namer}}</option>
+                        {% endfor %}
+                    </select>
+                    <button class="button" id="db-delete">削除</button>
+                </div>
+            </div>
+
+            <div class="dataspace">
+                <div class="data-table">
+                    <table>
+                        <tr>
+                            <th>月</th>
+                            <th>日</th>
+                            <th>曜</th>
+                            <th>名前</th>
+                            <th>CT</th>
+                            <th>LT</th>
+                            <th>WH</th>
+                            <th>本指</th>
+                            <th>延指</th>
+                            <th>場指</th>
+                            <th>DS</th>
+                            <th>DL</th>
+                            <th>ボトル</th>
+                            <th>同伴</th>
+                            <th>送迎</th>
+                            <th>罰金</th>
+                            <th>日払い</th>
+                        </tr>
+                        {% for psdata in alldatas %}
+                        {% if psdata.ps == userps and psdata.month != None %}
+                        <tr>
+                            <td>{{psdata.month}}</td>
+                            <td>{{psdata.day}}</td>
+                            <td>{{psdata.dow}}</td>
+                            <td>{{psdata.name}}</td>
+                            <td>{{psdata.ct}}</td>
+                            <td>{{psdata.lt}}</td>
+                            <td>{{psdata.wh}}</td>
+                            <td>{{psdata.number1}}</td>
+                            <td>{{psdata.number2}}</td>
+                            <td>{{psdata.number3}}</td>
+                            <td>{{psdata.number4}}</td>
+                            <td>{{psdata.number5}}</td>
+                            <td>{{psdata.bottle}}</td>
+                            <td>{{psdata.accompanied}}</td>
+                            <td>{{psdata.transfer}}</td>
+                            <td>{{psdata.fine}}</td>
+                            <td>{{psdata.daypay}}</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        <tr>
+                            <th colspan="6">合計</th>
+                            <th>{{sumwh}}</th>
+                            <th>{{sumnumber1}}</th>
+                            <th>{{sumnumber2}}</th>
+                            <th>{{sumnumber3}}</th>
+                            <th>{{sumnumber4}}</th>
+                            <th>{{sumnumber5}}</th>
+                            <th>{{sumbottle}}</th>
+                            <th>{{sumaccompanied}}</th>
+                            <th>{{sumtransfer}}</th>
+                            <th>{{sumfine}}</th>
+                            <th>{{sumdaypay}}</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="calcspace">
+                <div>
+                    <form name="form1" class="calc-top">
+                        <table class="data-calc1">
+                            <tr>
+                                <td>月</td>
+                                <td>
+                                    <select class="sel" id="mon">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="mond" value="{{monwh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="monr" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>火</td>
+                                <td>
+                                    <select class="sel" id="tue">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="tued" value="{{tuewh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="tuer" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>水</td>
+                                <td>
+                                    <select class="sel" id="wed">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="wedd" value="{{wedwh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="wedr" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>木</td>
+                                <td>
+                                    <select class="sel" id="thu">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="thud" value="{{thuwh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="thur" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>金</td>
+                                <td>
+                                    <select class="sel" id="fri">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="frid" value="{{friwh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="frir" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>土</td>
+                                <td>
+                                    <select class="sel" id="sat">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="satd" value="{{satwh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="satr" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>日</td>
+                                <td>
+                                    <select class="sel" id="sun">
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="sund" value="{{sunwh}}">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="sunr" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>単価</td>
+                                <td>
+                                    <select class="sel" id="free">
+                                        <option value="0">0</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                        <option value="700">700</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1000">1000</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                        <option value="5000">5000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="freed" value="0">
+                                    <span> h =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="freer" value="0">円</td>
+                            </tr>
+                        </table>
+                        <table class="data-calc2">
+                            <tr>
+                                <td>本指名</td>
+                                <td>
+                                    <select class="sel" id="num1">
+                                        <option value="2000">2000</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                        <option value="700">700</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1000">1000</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="num1d" value="{{sumnumber1}}">
+                                    <span> 本 =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="num1r" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>延長指名</td>
+                                <td>
+                                    <select class="sel" id="num2">
+                                        <option value="1000">1000</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                        <option value="700">700</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                        <option value="2000">1000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="num2d" value="{{sumnumber2}}">
+                                    <span> 本 =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="num2r" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>場内指名</td>
+                                <td>
+                                    <select class="sel" id="num3">
+                                        <option value="700">700</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1000">1000</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                        <option value="2000">2000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="num3d" value="{{sumnumber3}}">
+                                    <span> 本 =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="num3r" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>DS</td>
+                                <td>
+                                    <select class="sel" id="num4">
+                                        <option value="300">300</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                        <option value="700">700</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1000">1000</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                        <option value="2000">2000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="num4d" value="{{sumnumber4}}">
+                                    <span> 本 =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="num4r" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>DL</td>
+                                <td>
+                                    <select class="sel" id="num5">
+                                        <option value="600">600</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="700">700</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1000">1000</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                        <option value="2000">2000</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="num5d" value="{{sumnumber5}}">
+                                    <span> 本 =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="num5r" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>ボトル</td>
+                                <td colspan="2" style="text-align: right;"><input type="text" class="calin" id="botr" value="{{sumbottle}}" style="width: 100px;">円</td>
+                            </tr>
+                            <tr>
+                                <td>同伴</td>
+                                <td>
+                                    <select class="sel" id="accom">
+                                        <option value="5000">5000</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                        <option value="700">700</option>
+                                        <option value="800">800</option>
+                                        <option value="900">900</option>
+                                        <option value="1000">1000</option>
+                                        <option value="1100">1100</option>
+                                        <option value="1200">1200</option>
+                                        <option value="1300">1300</option>
+                                        <option value="1400">1400</option>
+                                        <option value="1500">1500</option>
+                                        <option value="1600">1600</option>
+                                        <option value="1700">1700</option>
+                                        <option value="1800">1800</option>
+                                        <option value="1900">1900</option>
+                                        <option value="2000">2000</option>
+                                        <option value="2100">2100</option>
+                                        <option value="2200">2200</option>
+                                        <option value="2300">2300</option>
+                                        <option value="2400">2400</option>
+                                        <option value="2500">2500</option>
+                                        <option value="2600">2600</option>
+                                        <option value="2700">2700</option>
+                                        <option value="2800">2800</option>
+                                        <option value="2900">2900</option>
+                                        <option value="3000">3000</option>
+                                        <option value="3100">3100</option>
+                                        <option value="3200">3200</option>
+                                        <option value="3300">3300</option>
+                                        <option value="3400">3400</option>
+                                        <option value="3500">3500</option>
+                                        <option value="3600">3600</option>
+                                        <option value="3700">3700</option>
+                                        <option value="3800">3800</option>
+                                        <option value="3900">3900</option>
+                                        <option value="4000">4000</option>
+                                        <option value="4100">4100</option>
+                                        <option value="4200">4200</option>
+                                        <option value="4300">4300</option>
+                                        <option value="4400">4400</option>
+                                        <option value="4500">4500</option>
+                                        <option value="4600">4600</option>
+                                        <option value="4700">4700</option>
+                                        <option value="4800">4800</option>
+                                        <option value="4900">4900</option>
+                                    </select>
+                                    <span> 円 × </span>
+                                    <input type="text" class="calin" id="accomd" value="{{sumaccompanied}}">
+                                    <span> 本 =</span>
+                                </td>
+                                <td><input type="text" class="calin" id="accomr" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>合計</td>
+                                <td colspan="2" style="text-align: right;"><input type="text" class="calin" id="resr" value="0" style="width: 100px;">円</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="calc-down">
+                        <table>
+                            <tr>
+                                <td>合計金額</td>
+                                <td><input type="text" class="calin" id="resrd" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>共益費(10%)</td>
+                                <td><input type="text" class="calin" id="ten" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>欠勤・遅刻</td>
+                                <td><input type="text" class="calin" id="fin" value="{{sumfine}}">円</td>
+                            </tr>
+                        </table>
+                        <table>
+                            <tr>
+                                <td>手当</td>
+                                <td><input type="text" class="calin" id="bou" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>先払い</td>
+                                <td><input type="text" class="calin" value="{{sumdaypay}}">円</td>
+                            </tr>
+                            <tr>
+                                <td>送迎</td>
+                                <td><input type="text" class="calin" id="tra" value="0">円</td>
+                            </tr>
+                        </table>
+                        <table class="total">
+                            <tr>
+                                <td>総支払額</td>
+                                <td><input type="text" class="calin" id="pay" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>税抜き</td>
+                                <td><input type="text" class="calin" id="taxcut" value="0">円</td>
+                            </tr>
+                            <tr>
+                                <td>消費税(10%)</td>
+                                <td><input type="text" class="calin" id="tax" value="0">円</td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+            <div class="cluc-btn">
+                <button class="button3" id="calc-btn">計算する</button>
+            </div>
+        </div>
+        <form action="/pay" method="POST" id="send-place">
+            <input type="text" class="white" name="userps"value="{{userps}}">
+            <button class="white" type="submit" id="send-btn"></button>
+        </form>
+        <form action="/result" method="POST" id="result-place">
+            <input type="text" class="white" name="userps"value="{{userps}}">
+            <button class="white" type="submit" id="result-btn"></button>
+        </form>
+    </div>
+
+</main>
+
+<script src="{{url_for('static',filename='editbtn.js')}}"></script>
+
+
+{% endblock %}

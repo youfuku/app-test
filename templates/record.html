@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+
+{% block body %}
+<header>
+    <div class="container">
+        <h2 class="app-title">payroll app</h2>
+    </div>
+</header>
+<main>
+    <div class="container">
+        <div class="record">
+            <div class="inner">
+                <div class="date">
+                    <select name="month" id="date-month">
+                        <option value="1">1月</option>
+                        <option value="2">2月</option>
+                        <option value="3">3月</option>
+                        <option value="4">4月</option>
+                        <option value="5">5月</option>
+                        <option value="6">6月</option>
+                        <option value="7">7月</option>
+                        <option value="8">8月</option>
+                        <option value="9">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                    <select name="day" id="date-day">
+                        <option value="1">1日</option>
+                        <option value="2">2日</option>
+                        <option value="3">3日</option>
+                        <option value="4">4日</option>
+                        <option value="5">5日</option>
+                        <option value="6">6日</option>
+                        <option value="7">7日</option>
+                        <option value="8">8日</option>
+                        <option value="9">9日</option>
+                        <option value="10">10日</option>
+                        <option value="11">11日</option>
+                        <option value="12">12日</option>
+                        <option value="13">13日</option>
+                        <option value="14">14日</option>
+                        <option value="15">15日</option>
+                        <option value="16">16日</option>
+                        <option value="17">17日</option>
+                        <option value="18">18日</option>
+                        <option value="19">19日</option>
+                        <option value="20">20日</option>
+                        <option value="21">21日</option>
+                        <option value="22">22日</option>
+                        <option value="23">23日</option>
+                        <option value="24">24日</option>
+                        <option value="25">25日</option>
+                        <option value="26">26日</option>
+                        <option value="27">27日</option>
+                        <option value="28">28日</option>
+                        <option value="29">29日</option>
+                        <option value="30">30日</option>
+                        <option value="31">31日</option>
+                    </select>
+                    <select name="dow" id="date-dow">
+                        <option value="月">月曜日</option>
+                        <option value="火">火曜日</option>
+                        <option value="水">水曜日</option>
+                        <option value="木">木曜日</option>
+                        <option value="金">金曜日</option>
+                        <option value="土">土曜日</option>
+                        <option value="日">日曜日</option>
+                    </select>
+                    <span>出勤</span>
+                    <select name="nop">
+                        <option value="1人">1人</option>
+                        <option value="2人">2人</option>
+                        <option value="3人">3人</option>
+                        <option value="4人">4人</option>
+                        <option value="5人">5人</option>
+                        <option value="6人">6人</option>
+                        <option value="7人">7人</option>
+                        <option value="8人">8人</option>
+                        <option value="9人">9人</option>
+                        <option value="10人">10人</option>
+                        <option value="11人">11人</option>
+                        <option value="12人">12人</option>
+                        <option value="13人">13人</option>
+                        <option value="14人">14人</option>
+                        <option value="15人">15人</option>
+                        <option value="16人">16人</option>
+                        <option value="17人">17人</option>
+                        <option value="18人">18人</option>
+                        <option value="19人">19人</option>
+                        <option value="20人">20人</option>
+                        <option value="21人">21人</option>
+                        <option value="22人">22人</option>
+                        <option value="23人">23人</option>
+                        <option value="24人">24人</option>
+                        <option value="25人">25人</option>
+                        <option value="26人">26人</option>
+                        <option value="27人">27人</option>
+                        <option value="28人">28人</option>
+                        <option value="29人">29人</option>
+                        <option value="30人">30人</option>
+                    </select>
+                </div>
+                <button class="button" id="reset-btn">リセット</button>
+                <div class="record-btn">
+                    <button class="button1" id="keep-btn">データベースに保存</button>
+                </div>
+            </div>
+
+
+            <div class="record-place">
+                <table>
+                    <tr>
+                        <th>名前</th>
+                        <th>本指名</th>
+                        <th>延長指名</th>
+                        <th>場内指名</th>
+                        <th>DS</th>
+                        <th>DL</th>
+                        <th>ボトル</th>
+                        <th>同伴</th>
+                    </tr>
+
+
+                    <tr id="record-place">
+                        <th>名前</th>
+                        <th>出勤時間</th>
+                        <th>退勤時間</th>
+                        <th>送迎</th>
+                        <th>罰金</th>
+                        <th>日払い</th>
+                    </tr>
+
+                    <tr id="record-place1"></tr>
+
+                </table>
+            </div>
+        </div>
+        <div class="list">
+            <div class="inn">
+                <h2>【リスト】</h2>
+                <div class="register">
+                    <label for="">名前：</label>
+                    <input type="text" class="list-text" id="list-text">
+                    <button class="button" id="list-add-btn">登録</button>
+                    <button class="button" id="list-delete-btn">名前の削除</button>
+                </div>
+                <div class="list-btn">
+                    <button class="button1" id="trans-btn">リストを送信</button>
+                </div>
+                
+            </div>
+            <div class="list-holder">
+                <div class="list-place" id="list-place">
+                    {% for namer in namers %}
+                    <input type="checkbox" name="check"><label name="name" value="">{{namer}}</label>
+                    {% endfor %}
+                </div>
+            </div>
+            <p style="text-align: center;">※データベースに保存されている名前は自動でリストに追加されます</p>
+        </div>
+        <div class="databox">
+            <div class="in">
+                <h2>【データベース】</h2>
+                <form action="/edit" method="POST">
+                    <input type="text" class="white" name="userps" value="{{userps}}">
+                    <button class="button2" type="submit" id="submit-edit">データベースの編集&計算ページに移動→</button>
+                </form>
+            </div>
+            <div class="data-list">
+                <table>
+                    <tr>
+                        <th>月</th>
+                        <th>日</th>
+                        <th>曜</th>
+                        <th>名前</th>
+                        <th>本指</th>
+                        <th>延指</th>
+                        <th>場指</th>
+                        <th>DS</th>
+                        <th>DL</th>
+                        <th>ボトル</th>
+                        <th>同伴</th>
+                        <th>CT</th>
+                        <th>LT</th>
+                        <th>WH</th>
+                        <th>送迎</th>
+                        <th>罰金</th>
+                        <th>日払い</th>
+                    </tr>
+                    {% for psdata in alldatas %}
+                    {% if psdata.ps == userps and psdata.month != None %}
+                    <tr>
+                        <td>{{psdata.month}}</td>
+                        <td>{{psdata.day}}</td>
+                        <td>{{psdata.dow}}</td>
+                        <td>{{psdata.name}}</td>
+                        <td>{{psdata.number1}}</td>
+                        <td>{{psdata.number2}}</td>
+                        <td>{{psdata.number3}}</td>
+                        <td>{{psdata.number4}}</td>
+                        <td>{{psdata.number5}}</td>
+                        <td>{{psdata.bottle}}</td>
+                        <td>{{psdata.accompanied}}</td>
+                        <td>{{psdata.ct}}</td>
+                        <td>{{psdata.lt}}</td>
+                        <td>{{psdata.wh}}</td>
+                        <td>{{psdata.transfer}}</td>
+                        <td>{{psdata.fine}}</td>
+                        <td>{{psdata.daypay}}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    <tr id="keep-place"></tr>
+                </table>
+            </div>
+            <div>
+                <form action="/keep" method="POST" id="form-place">
+                    <div>
+                        <button type="submit" id="submit-db" class="white"></button>
+                        <input type="text"class="white"  id="pswd" name="userps" value="{{userps}}">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="{{url_for('static',filename='recordbtn.js')}}"></script>
+{% endblock %}

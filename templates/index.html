@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block body %}
+<header>
+    <div class="container">
+        <h2 class="app-title">payroll app</h2>
+    </div>
+</header>
+
+<main>
+    <div class="container1">
+        <div class="log-title">
+            <h1>ログイン</h1>
+        </div>
+        <div class="log-make">
+            <p>初めての方は任意のパスワードを作成してください。</p>
+            <h2>《パスワードの作成》</h2>
+            <div>
+                <form action="/add" method="POST" class="log-form">
+                    <input type="text" class="intext" name="pswd">
+                    <button type="submit" class="inbutton">作成</button>
+                </form>
+            </div>
+            <span style="color: red;">{{errortext}}</span>
+            <span style="color: red;">{{errortext1}}</span>
+            <span style="color: rgb(0, 223, 111);">{{successtext}}</span>
+            </form>
+        </div>
+        <div class="log-input">
+            <p>パスワードを作成された方は下の入力欄からログインしてください。</p>
+            <h2>《パスワードの入力》</h2>
+            <div>
+                <form action="/record" method="POST" class="log-form">
+                    <input type="text" class="intext" name="login">
+                    <button type="submit" class="inbutton">ログイン</button>
+                </form>
+            </div>
+            <span style="color: red;">{{errortext2}}</span>
+            <span style="color: red;">{{errortext3}}</span>
+        </div>
+        <div class="log-messege">
+            <p>※パスワードを忘れた場合、データを引き出せなくなる可能性があるため、<br>必ずメモなどに記録しておいてください。</p>
+        </div>
+
+    </div>
+</main>
+    {% endblock %}
